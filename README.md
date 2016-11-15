@@ -1,3 +1,5 @@
+![BLT logo](doc/blt_logo.png)
+
 # BLT - A Library for Lattice Based Integer Linear Programming  {#mainpage}
 
 ## Introduction
