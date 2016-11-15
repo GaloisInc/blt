@@ -1,0 +1,6 @@
+<map id="SearchState::set_index" name="SearchState::set_index">
+<area shape="rect" id="node2" href="$expr_8cc.html#a1d0595e75b9c2041ebb43df2783687ff" title="Round all coefficients of the Expr to the nearest integer. " alt="" coords="213,29,268,55"/>
+<area shape="rect" id="node5" href="$closest_8cc.html#afaa22aeeeb0ca29b162668b84dbd7e57" title="Custom sgn function that returns &#45;1 at z=0. " alt="" coords="219,79,262,104"/>
+<area shape="rect" id="node3" href="$classExpr.html#a7b27c7f1b60b7fa5cbe1b0492c8b26d2" title="Return a set of variable indices which occur in this Expr. " alt="" coords="324,5,422,31"/>
+<area shape="rect" id="node4" href="$classExpr.html#afde75a21abfe7fb258b9419f548b9ac6" title="Expr::get_const" alt="" coords="316,55,430,80"/>
+</map>

@@ -1,0 +1,10 @@
+doc_output
+dist
+cabal.sandbox.config
+.cabal-sandbox
+.stack-work
+stack.yaml
+.DS_Store
+setup_env.sh
+setup_mirror.sh
+env

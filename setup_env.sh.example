@@ -1,0 +1,11 @@
+# Template for setting up local development environment variables.
+#
+
+# directory for shared 3rd party libraries
+export LD_LIBRARY_PATH="$HOME/local/lib"
+
+# directory for 3rd party libraries needed at link time
+export LDFLAGS="-L$HOME/local/lib"
+
+# directory for 3rd party headers
+export CPPFLAGS="-I$HOME/local/include"

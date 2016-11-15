@@ -1,0 +1,43 @@
+<map id="test_tight_parallelogram" name="test_tight_parallelogram">
+<area shape="rect" id="node2" href="$blt_8cc.html#ae499a3d226ca36522081d5176822bb33" title="blt_init" alt="" coords="232,5,292,31"/>
+<area shape="rect" id="node3" href="$blt_8cc.html#a3b8458efde8afed94cd735198cc40776" title="blt_var" alt="" coords="231,55,292,80"/>
+<area shape="rect" id="node5" href="$blt_8cc.html#acb09e89dd15cceadbeb61ca1d6237242" title="blt_add" alt="" coords="229,104,294,129"/>
+<area shape="rect" id="node6" href="$blt_8cc.html#af91a09674f596c9d3e7cc05f4961a921" title="blt_smul" alt="" coords="226,153,297,179"/>
+<area shape="rect" id="node7" href="$blt_8cc.html#a39516c98426a247175b35d7ea0142b28" title="blt_assume" alt="" coords="217,203,306,228"/>
+<area shape="rect" id="node10" href="$blt_8cc.html#a30fe6ddf0a9781bb7e6c15de980d6f3b" title="blt_check" alt="" coords="223,252,301,277"/>
+<area shape="rect" id="node42" href="$blt_8cc.html#a26b247c3615ae363d1551febbfef7f41" title="Free memory associated with the given Context. " alt="" coords="229,301,295,327"/>
+<area shape="rect" id="node4" href="$classContext.html#a94538e042854dfd1b7683bc9739bd58f" title="Context::mkVar" alt="" coords="359,55,471,80"/>
+<area shape="rect" id="node8" href="$classContext.html#adbd16cf66a2cf05a13eda61518dfe7ae" title="Context::assume" alt="" coords="354,153,476,179"/>
+<area shape="rect" id="node9" href="$classExpr.html#a7b27c7f1b60b7fa5cbe1b0492c8b26d2" title="Return a set of variable indices which occur in this Expr. " alt="" coords="1151,116,1248,141"/>
+<area shape="rect" id="node11" href="$classContext.html#adf6d53324de7a1d9ee2750a3e9fe8808" title="Context::check" alt="" coords="360,412,470,437"/>
+<area shape="rect" id="node12" href="$context_8cc.html#a4147ffa0a11b2fdea46b25a632265961" title="Non&#45;class functions. " alt="" coords="545,463,680,488"/>
+<area shape="rect" id="node13" href="$context_8cc.html#a5e81d1848cd77050be06c141ea219972" title="stretch_to_cube" alt="" coords="554,512,670,537"/>
+<area shape="rect" id="node14" href="$ntl__wrapper_8cc.html#a294e292ff060d75eadbcf38bfd9e3014" title="LLL reduction. " alt="" coords="591,635,634,660"/>
+<area shape="rect" id="node17" href="$ntl__wrapper_8cc.html#aa97326e04f5e79c246441dd7d3cd42a6" title="Utilities. " alt="" coords="555,561,669,587"/>
+<area shape="rect" id="node18" href="$classContext.html#aae94ae38bbab69740621283b9eeb8e0d" title="Context::is_yices_enabled" alt="" coords="524,684,701,709"/>
+<area shape="rect" id="node19" href="$yices__stub_8c.html#acf9055694379135982edac0dc63ed2a4" title="load_yices" alt="" coords="570,128,655,153"/>
+<area shape="rect" id="node21" href="$closest_8cc.html#a4ba674b15fb5af8dd3309e22428cd11e" title="Create a fresh set of stats. " alt="" coords="572,263,653,288"/>
+<area shape="rect" id="node22" href="$closest_8cc.html#a03a1eb977723a21478c2d6998d87b889" title="closest" alt="" coords="581,361,644,387"/>
+<area shape="rect" id="node39" href="$closest_8cc.html#af20fc710d446b2a09b207923b80313ee" title="Check if the vector u represents a solution to the ILP problem. " alt="" coords="784,585,872,611"/>
+<area shape="rect" id="node41" href="$classContext.html#a7a599ab64dab9213311c863f5ec99013" title="Context::getVarName" alt="" coords="538,312,687,337"/>
+<area shape="rect" id="node15" href="$ntl__wrapper_8cc.html#ab8d15bb4602e7830ece2eb25b1827ad6" title="matrix_to_ntl" alt="" coords="780,635,877,660"/>
+<area shape="rect" id="node16" href="$ntl__wrapper_8cc.html#a838557ccafac5fed5c0d24434655f82e" title="ntl_to_matrix" alt="" coords="780,684,877,709"/>
+<area shape="rect" id="node20" href="$yices__stub_8c.html#a40f9a34ad887d36cccafa08449cce036" title="load_sym" alt="" coords="789,43,868,68"/>
+<area shape="rect" id="node23" href="$glpk__wrapper_8cc.html#a423e00e5f60b39fbdda859eb35f077bc" title="newSM" alt="" coords="796,487,861,512"/>
+<area shape="rect" id="node24" href="$glpk__wrapper_8cc.html#aae01599dce653b6f96311e295756464d" title="infdist" alt="" coords="800,536,857,561"/>
+<area shape="rect" id="node27" href="$glpk__wrapper_8cc.html#a9edd32b61f428e31b6ddcbc2b2622a29" title="freeSM" alt="" coords="796,92,861,117"/>
+<area shape="rect" id="node28" href="$structSearchState.html#aa1bc8d1e7d0e8f1d9650d401aed797ca" title="SearchState::set_index" alt="" coords="749,339,908,364"/>
+<area shape="rect" id="node32" href="$util_8cc.html#a752e53b60c4034be1f1577574ed5599f" title="Disjunction of &#39;approximatelyEqual&#39; and &#39;definatelyLess&#39;. " alt="" coords="768,141,889,167"/>
+<area shape="rect" id="node35" href="$yices__wrapper_8cc.html#acb334b4fe8eac3233a0b9dc331521047" title="yprune" alt="" coords="797,191,860,216"/>
+<area shape="rect" id="node36" href="$structSearchState.html#aa58ba4871e43e85c91e1d2dac707d214" title="SearchState::ascend" alt="" coords="756,437,901,463"/>
+<area shape="rect" id="node37" href="$structSearchState.html#a118fb31d09536d09abb9ffabc7965763" title="SearchState::descend" alt="" coords="752,289,905,315"/>
+<area shape="rect" id="node38" href="$structSearchState.html#a0522877f928df5128f9c465fb23a2274" title="SearchState::record" alt="" coords="758,240,898,265"/>
+<area shape="rect" id="node40" href="$structSearchState.html#a72965ba6b20cc575d70a6450e31aaacf" title="SearchState::explore" alt="" coords="756,388,901,413"/>
+<area shape="rect" id="node25" href="$glpk__wrapper_8cc.html#a086b8810c8bfea3630b5df1ed7c7a168" title="scale_exp" alt="" coords="985,560,1066,585"/>
+<area shape="rect" id="node26" href="$glpk__wrapper_8cc.html#aeece469bc9e83ec5303187a2cf204883" title="glpk_infdist" alt="" coords="981,511,1069,536"/>
+<area shape="rect" id="node29" href="$expr_8cc.html#a1d0595e75b9c2041ebb43df2783687ff" title="Round all coefficients of the Expr to the nearest integer. " alt="" coords="998,289,1053,315"/>
+<area shape="rect" id="node31" href="$closest_8cc.html#afaa22aeeeb0ca29b162668b84dbd7e57" title="Custom sgn function that returns &#45;1 at z=0. " alt="" coords="1004,363,1047,388"/>
+<area shape="rect" id="node30" href="$classExpr.html#afde75a21abfe7fb258b9419f548b9ac6" title="Expr::get_const" alt="" coords="1142,289,1256,315"/>
+<area shape="rect" id="node33" href="$util_8cc.html#a5e2267f574ac5eae97d5bd55bea43382" title="definatelyLess" alt="" coords="972,167,1079,192"/>
+<area shape="rect" id="node34" href="$util_8cc.html#a04a5695e14385e9115e7006d63577f6b" title="approximatelyEqual" alt="" coords="956,117,1094,143"/>
+</map>

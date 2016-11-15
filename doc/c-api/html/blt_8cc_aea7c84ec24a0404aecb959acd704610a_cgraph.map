@@ -1,0 +1,5 @@
+<map id="blt_backtrack" name="blt_backtrack">
+<area shape="rect" id="node2" href="$classContext.html#a1ae600ac530a948fa23168261e674f94" title="Context::backtrack" alt="" coords="153,31,285,56"/>
+<area shape="rect" id="node3" href="$classContext.html#a4e81c0fdb7939215ef9202b1e286ddbe" title="Context::valid_state" alt="" coords="333,5,471,31"/>
+<area shape="rect" id="node4" href="$classSolvState.html#aea04cbcf6a0cbddf308e2e0aa0fa7be2" title="SolvState::pos" alt="" coords="519,31,627,56"/>
+</map>

@@ -1,0 +1,33 @@
+<map id="Context::check" name="Context::check">
+<area shape="rect" id="node2" href="$context_8cc.html#a4147ffa0a11b2fdea46b25a632265961" title="Non&#45;class functions. " alt="" coords="184,5,319,31"/>
+<area shape="rect" id="node3" href="$context_8cc.html#a5e81d1848cd77050be06c141ea219972" title="stretch_to_cube" alt="" coords="193,55,309,80"/>
+<area shape="rect" id="node4" href="$ntl__wrapper_8cc.html#a294e292ff060d75eadbcf38bfd9e3014" title="LLL reduction. " alt="" coords="230,177,273,203"/>
+<area shape="rect" id="node7" href="$ntl__wrapper_8cc.html#aa97326e04f5e79c246441dd7d3cd42a6" title="Utilities. " alt="" coords="194,104,308,129"/>
+<area shape="rect" id="node8" href="$classContext.html#aae94ae38bbab69740621283b9eeb8e0d" title="Context::is_yices_enabled" alt="" coords="163,227,340,252"/>
+<area shape="rect" id="node9" href="$yices__stub_8c.html#acf9055694379135982edac0dc63ed2a4" title="load_yices" alt="" coords="209,276,294,301"/>
+<area shape="rect" id="node11" href="$closest_8cc.html#a4ba674b15fb5af8dd3309e22428cd11e" title="Create a fresh set of stats. " alt="" coords="211,325,292,351"/>
+<area shape="rect" id="node12" href="$closest_8cc.html#a03a1eb977723a21478c2d6998d87b889" title="closest" alt="" coords="220,449,283,475"/>
+<area shape="rect" id="node30" href="$closest_8cc.html#af20fc710d446b2a09b207923b80313ee" title="Check if the vector u represents a solution to the ILP problem. " alt="" coords="423,745,511,771"/>
+<area shape="rect" id="node32" href="$classContext.html#a7a599ab64dab9213311c863f5ec99013" title="Context::getVarName" alt="" coords="177,551,326,576"/>
+<area shape="rect" id="node5" href="$ntl__wrapper_8cc.html#ab8d15bb4602e7830ece2eb25b1827ad6" title="matrix_to_ntl" alt="" coords="419,104,516,129"/>
+<area shape="rect" id="node6" href="$ntl__wrapper_8cc.html#a838557ccafac5fed5c0d24434655f82e" title="ntl_to_matrix" alt="" coords="419,153,516,179"/>
+<area shape="rect" id="node10" href="$yices__stub_8c.html#a40f9a34ad887d36cccafa08449cce036" title="load_sym" alt="" coords="428,203,507,228"/>
+<area shape="rect" id="node13" href="$glpk__wrapper_8cc.html#a423e00e5f60b39fbdda859eb35f077bc" title="newSM" alt="" coords="435,351,500,376"/>
+<area shape="rect" id="node14" href="$glpk__wrapper_8cc.html#aae01599dce653b6f96311e295756464d" title="infdist" alt="" coords="439,400,496,425"/>
+<area shape="rect" id="node17" href="$glpk__wrapper_8cc.html#a9edd32b61f428e31b6ddcbc2b2622a29" title="freeSM" alt="" coords="435,449,500,475"/>
+<area shape="rect" id="node18" href="$structSearchState.html#aa1bc8d1e7d0e8f1d9650d401aed797ca" title="SearchState::set_index" alt="" coords="388,597,547,623"/>
+<area shape="rect" id="node23" href="$util_8cc.html#a752e53b60c4034be1f1577574ed5599f" title="Disjunction of &#39;approximatelyEqual&#39; and &#39;definatelyLess&#39;. " alt="" coords="407,696,528,721"/>
+<area shape="rect" id="node26" href="$yices__wrapper_8cc.html#acb334b4fe8eac3233a0b9dc331521047" title="yprune" alt="" coords="436,252,498,277"/>
+<area shape="rect" id="node27" href="$structSearchState.html#aa58ba4871e43e85c91e1d2dac707d214" title="SearchState::ascend" alt="" coords="395,499,540,524"/>
+<area shape="rect" id="node28" href="$structSearchState.html#a118fb31d09536d09abb9ffabc7965763" title="SearchState::descend" alt="" coords="391,647,544,672"/>
+<area shape="rect" id="node29" href="$structSearchState.html#a0522877f928df5128f9c465fb23a2274" title="SearchState::record" alt="" coords="397,301,537,327"/>
+<area shape="rect" id="node31" href="$structSearchState.html#a72965ba6b20cc575d70a6450e31aaacf" title="SearchState::explore" alt="" coords="395,548,540,573"/>
+<area shape="rect" id="node15" href="$glpk__wrapper_8cc.html#a086b8810c8bfea3630b5df1ed7c7a168" title="scale_exp" alt="" coords="624,425,705,451"/>
+<area shape="rect" id="node16" href="$glpk__wrapper_8cc.html#aeece469bc9e83ec5303187a2cf204883" title="glpk_infdist" alt="" coords="620,376,708,401"/>
+<area shape="rect" id="node19" href="$expr_8cc.html#a1d0595e75b9c2041ebb43df2783687ff" title="Round all coefficients of the Expr to the nearest integer. " alt="" coords="637,640,692,665"/>
+<area shape="rect" id="node22" href="$closest_8cc.html#afaa22aeeeb0ca29b162668b84dbd7e57" title="Custom sgn function that returns &#45;1 at z=0. " alt="" coords="643,560,686,585"/>
+<area shape="rect" id="node20" href="$classExpr.html#a7b27c7f1b60b7fa5cbe1b0492c8b26d2" title="Return a set of variable indices which occur in this Expr. " alt="" coords="790,615,887,640"/>
+<area shape="rect" id="node21" href="$classExpr.html#afde75a21abfe7fb258b9419f548b9ac6" title="Expr::get_const" alt="" coords="781,664,895,689"/>
+<area shape="rect" id="node24" href="$util_8cc.html#a5e2267f574ac5eae97d5bd55bea43382" title="definatelyLess" alt="" coords="611,741,718,767"/>
+<area shape="rect" id="node25" href="$util_8cc.html#a04a5695e14385e9115e7006d63577f6b" title="approximatelyEqual" alt="" coords="595,692,733,717"/>
+</map>

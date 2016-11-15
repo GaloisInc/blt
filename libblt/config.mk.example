@@ -1,0 +1,24 @@
+# User configurable build settings
+
+# Build options: set these if desired
+OPT_FLAGS   ?= -O3
+COV_FLAGS   ?=
+DEBUG_FLAGS ?= -DNDEBUG
+
+# Default values of compiler/linker flags
+CFLAGS   ?= -Wall $(DEBUG_FLAGS) $(OPT_FLAGS) $(COV_FLAGS)
+CXXFLAGS ?= -Wall $(DEBUG_FLAGS) $(OPT_FLAGS) $(COV_FLAGS)
+CPPFLAGS ?=
+LDFLAGS  ?=
+
+# Example settings for analyzing code coverage:
+#
+# OPT_FLAGS   ?= -O0
+# COV_FLAGS   ?= --coverage
+# DEBUG_FLAGS ?= -g
+#
+# PREFIX = $(HOME)/local
+#
+# CXXFLAGS ?= -Wall $(DEBUG_FLAGS) $(OPT_FLAGS) $(COV_FLAGS)
+# CPPFLAGS ?= -isystem /usr/local/include -I$(PREFIX)/include
+# LDFLAGS  ?= -L$(PREFIX)/lib

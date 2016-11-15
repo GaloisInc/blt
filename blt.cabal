@@ -1,0 +1,48 @@
+name:                blt
+version:             0.13.4
+synopsis:            Haskell bindings to BLT
+description:         Haskell API for the BLT solver. BLT handles bounded
+                     integer linear programming problems using lattice-based
+                     techniques.
+license-file:        LICENSE
+author:              Benjamin Jones (Galois, Inc)
+maintainer:          bjones@galois.com
+copyright:           Galois, Inc. 2014-2016
+category:            Development
+build-type:          Custom
+cabal-version:       >=1.10
+
+extra-source-files: libblt/Makefile
+                  , libblt/*.cc
+                  , libblt/*.c
+                  , libblt/*.h
+                  , libblt/config.mk.example
+                  , libblt/run_tests.sh
+
+source-repository head
+  type: git
+  location: https://github.com/GaloisInc/blt.git
+
+
+library
+  default-language:  Haskell2010
+  exposed-modules:   BLT.Binding
+  other-modules:     BLT.Internal
+  build-depends:     base >=4.7 && <5
+  hs-source-dirs:    src
+  include-dirs:      libblt
+
+  -- Add extra dependencies for BLT (the haskell library), as well as for
+  -- BLT the C++ library.
+  extra-libraries: blt, glpk, ntl, stdc++, m
+
+
+executable test
+  main-is: Test.hs
+  build-depends:
+    base >=4.7 && <5,
+    blt
+  hs-source-dirs: test
+  default-language:  Haskell2010
+
+  extra-libraries: blt
