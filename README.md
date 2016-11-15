@@ -17,7 +17,7 @@ details.
 Finally, there is a stand-alone ILP solver included called `run_blt`. See
 the "Stand-alone Solver" section.
 
-The current version of BLT is 1.0.0, dated 2016-08-18.
+The current version of BLT is 1.0.0, dated 2016-11-15.
 
 
 ## Documentation
@@ -35,7 +35,7 @@ see the BLT.Bindings module.
 
 The C/C++ library may be built using standard Unix build system tools,
 `gcc` or `clang` and `make`. The Haskell bindings may be built using standard
-Haskell ecosystems tools such as either `cabal` or [stack].
+Haskell ecosystems tools such as either [cabal] or [stack].
 
 
 ### Dependencies
@@ -43,20 +43,21 @@ Haskell ecosystems tools such as either `cabal` or [stack].
 BLT depends on the following 3rd party software:
 
   * C++ compiler supporting the c++0x standard
-  * [GHC]   (>= 7.6) -- optional, for Haskell support
   * [GLPK]  (>= 4.53 && <= 4.55) -- provides real-valued linear programming
             (note v4.56 & 4.57 are known to be incompatible with BLT)
   * [NTL]   (>= 6.2.1 && <7.0 or >= 9.0.0) -- provides lattice reduction
             algorithms
-  * [Boost] (>= 1.55.0) -- provides matrices and vectors, rational numbers, and
-            the unit test framework. Only a subset of the boost headers are needed.
+  * [Boost] C++ headers (>= 1.55.0) -- provides matrices and vectors, rational
+            numbers, and the unit test framework. Only a subset of the boost
+            headers are needed
 
 and optionally,
 
-  * Yices (>= 2.3.0, see the section "Sound Mode" for more details)
+  * [GHC]   for Haskell support (>= 7.6)
+  * [Yices] SMT solver (>= 2.3.0, see the section "Sound Mode" for more details).
 
 
-An bootstrapping script `bootstrap.sh` is provided and may be used to
+A bootstrapping script `bootstrap.sh` is provided and may be used to
 automatically download and install most of these (not including the compiler).
 
 
@@ -161,7 +162,8 @@ be in the form:
 
 with all the a's, l's and u's being integer constants. In this case, 'x' is a
 vector of 'n' unknowns. In this format, each line represents a single
-two-sided inequality and excess whitespace is ignored.
+two-sided inequality and excess whitespace is ignored. There are several
+example `.bilp` files in the `test/data` directory for reference.
 
 `run_blt` supports a few optional flags:
 
@@ -226,4 +228,6 @@ details about the API.
 [GLPK]: https://www.gnu.org/software/glpk/
 [NTL]: http://www.shoup.net/ntl/
 [Boost]: http://www.boost.org/
+[Cabal]: https://www.haskell.org/cabal/
 [stack]: http://docs.haskellstack.org/en/stable/README
+[Yices]: http://yices.csl.sri.com/
