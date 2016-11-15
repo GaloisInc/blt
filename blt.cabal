@@ -1,5 +1,5 @@
 name:                blt
-version:             0.13.4
+version:             1.0.0
 synopsis:            Haskell bindings to BLT
 description:         Haskell API for the BLT solver. BLT handles bounded
                      integer linear programming problems using lattice-based
@@ -46,3 +46,10 @@ executable test
   default-language:  Haskell2010
 
   extra-libraries: blt
+
+custom-setup
+  setup-depends: base
+               , directory
+               , filepath
+               , Cabal
+

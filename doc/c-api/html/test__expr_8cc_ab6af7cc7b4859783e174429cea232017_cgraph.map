@@ -1,6 +1,0 @@
-<map id="BOOST_AUTO_TEST_CASE" name="BOOST_AUTO_TEST_CASE">
-<area shape="rect" id="node2" href="$expr_8cc.html#a8159b5fd1cada5ead186135633f4d89f" title="Construct a constant term. " alt="" coords="251,5,334,31"/>
-<area shape="rect" id="node3" href="$expr_8cc.html#a1d0595e75b9c2041ebb43df2783687ff" title="Round all coefficients of the Expr to the nearest integer. " alt="" coords="265,79,320,104"/>
-<area shape="rect" id="node4" href="$classExpr.html#a7b27c7f1b60b7fa5cbe1b0492c8b26d2" title="Return a set of variable indices which occur in this Expr. " alt="" coords="391,53,488,79"/>
-<area shape="rect" id="node5" href="$classExpr.html#afde75a21abfe7fb258b9419f548b9ac6" title="Expr::get_const" alt="" coords="382,103,496,128"/>
-</map>

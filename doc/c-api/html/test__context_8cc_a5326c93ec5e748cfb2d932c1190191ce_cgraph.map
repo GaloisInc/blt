@@ -1,6 +1,0 @@
-<map id="BOOST_AUTO_TEST_CASE" name="BOOST_AUTO_TEST_CASE">
-<area shape="rect" id="node2" href="$classContext.html#a946c2847b886a085a37c52c527b5a7a0" title="Return the number of active variables: popcount(mask) " alt="" coords="271,5,379,31"/>
-<area shape="rect" id="node3" href="$classContext.html#a94538e042854dfd1b7683bc9739bd58f" title="Context::mkVar" alt="" coords="269,55,381,80"/>
-<area shape="rect" id="node4" href="$classContext.html#a7a599ab64dab9213311c863f5ec99013" title="Context::getVarName" alt="" coords="251,104,399,129"/>
-<area shape="rect" id="node5" href="$classContext.html#a3da5632c11edac0a3ef4de259a5a8c03" title="Context::getVarIdx" alt="" coords="260,153,390,179"/>
-</map>

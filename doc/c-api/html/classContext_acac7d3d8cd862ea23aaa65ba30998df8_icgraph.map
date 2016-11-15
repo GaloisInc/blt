@@ -1,8 +1,0 @@
-<map id="Context::get_model" name="Context::get_model">
-<area shape="rect" id="node2" href="$blt_8h.html#a07284140fc003c37e2cf6464aee8c06f" title="blt_model" alt="" coords="249,29,329,55"/>
-<area shape="rect" id="node6" href="$classContext.html#a08b341044815e5c02fea40b3f756d3c5" title="Same as above but takes a variable index instead of a name. " alt="" coords="221,79,357,104"/>
-<area shape="rect" id="node7" href="$test__context_8cc.html#a0a016db0c28e2311d1aed6a960bf9fd8" title="BOOST_AUTO_TEST_CASE" alt="" coords="190,128,388,153"/>
-<area shape="rect" id="node3" href="$run__blt_8cc.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="471,5,521,31"/>
-<area shape="rect" id="node4" href="$test__blt_8h.html#a13a4cf4d827c639c4cfa61fcd629c16e" title="test_2d_problem" alt="" coords="436,55,556,80"/>
-<area shape="rect" id="node5" href="$test__blt_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="604,55,655,80"/>
-</map>

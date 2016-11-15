@@ -1,8 +1,0 @@
-<map id="libblt/parser.h" name="libblt/parser.h">
-<area shape="rect" id="node2" href="$latcon2bilp_8cc.html" title="libblt/latcon2bilp.cc" alt="" coords="5,79,139,104"/>
-<area shape="rect" id="node3" href="$parser_8cc.html" title="libblt/parser.cc" alt="" coords="163,79,269,104"/>
-<area shape="rect" id="node4" href="$run__blt_8cc.html" title="libblt/run_blt.cc" alt="" coords="293,79,403,104"/>
-<area shape="rect" id="node5" href="$test__closest_8cc.html" title="libblt/test_closest.cc" alt="" coords="427,79,567,104"/>
-<area shape="rect" id="node6" href="$test__parser_8cc.html" title="libblt/test_parser.cc" alt="" coords="591,79,726,104"/>
-<area shape="rect" id="node7" href="$test__regression_8cc.html" title="libblt/test_regression.cc" alt="" coords="750,79,911,104"/>
-</map>

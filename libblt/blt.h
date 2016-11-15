@@ -13,7 +13,7 @@
 
 
 /*! __BLT_VERSION should match the version in 'blt.cabal' */
-#define __BLT_VERSION "0.13.4"
+#define __BLT_VERSION "1.0.0"
 
 /*! 'ENVIRONMENT_XX' defines the machine word size */
 #if INTPTR_MAX == INT32_MAX

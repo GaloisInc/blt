@@ -17,20 +17,18 @@ details.
 Finally, there is a stand-alone ILP solver included called `run_blt`. See
 the "Stand-alone Solver" section.
 
-The current version of BLT is 0.13.4, dated 2016-05-02.
+The current version of BLT is 1.0.0, dated 2016-08-18.
 
 
 ## Documentation
 
-Documentation (HTML) for the C/C++ library and the Haskell binding API can be found
-in `doc/c-api/html` and `doc/haskell`, respectively.
+Documentation (HTML) for the C/C++ library and the Haskell binding API can
+generated from source using [doxygen](http://www.stack.nl/~dimitri/doxygen/)
+(for the source code documentation of the C/C++ library) and by using `cabal
+haddock` to generate the Haskell source documentation.
 
-The C/C++ library API is documented in the file [blt.h]. For the Haskell API,
+The C/C++ library API is documented in the file `blt.h`. For the Haskell API,
 see the BLT.Bindings module.
-
-Use [doxygen](http://www.stack.nl/~dimitri/doxygen/) to build the in-source
-documentation for the C/C++ library. Use `cabal haddock` to generate the
-Haskell source documentation.
 
 
 ## Installation and Usage
@@ -229,4 +227,3 @@ details about the API.
 [NTL]: http://www.shoup.net/ntl/
 [Boost]: http://www.boost.org/
 [stack]: http://docs.haskellstack.org/en/stable/README
-[blt.h]: blt_8h.html

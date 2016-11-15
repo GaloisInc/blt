@@ -1,4 +1,0 @@
-<map id="blt_assume" name="blt_assume">
-<area shape="rect" id="node2" href="$classContext.html#adbd16cf66a2cf05a13eda61518dfe7ae" title="Context::assume" alt="" coords="143,5,264,31"/>
-<area shape="rect" id="node3" href="$classExpr.html#a7b27c7f1b60b7fa5cbe1b0492c8b26d2" title="Return a set of variable indices which occur in this Expr. " alt="" coords="312,5,410,31"/>
-</map>
