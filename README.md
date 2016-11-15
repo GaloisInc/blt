@@ -10,7 +10,8 @@ complementary to many existing, traditional ILP solvers in that there are
 problems it solves very well and very quickly which traditional solvers do not
 (and vice-versa).
 
-For a theoretical discussion, see our conference [paper] (SMT Workshop 2015).
+For a theoretical discussion, see our conference [paper] from the 2015 SMT
+Workshop.
 
 This project also provides a higher level set of Haskell bindings to BLT
 through a Haskell package called "blt". See "Installation and Usage" below for
