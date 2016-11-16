@@ -4,10 +4,11 @@ synopsis:            Haskell bindings to BLT
 description:         Haskell API for the BLT solver. BLT handles bounded
                      integer linear programming problems using lattice-based
                      techniques.
+license:             MIT
 license-file:        LICENSE
-author:              Benjamin Jones (Galois, Inc)
+author:              Benjamin Jones (Galois Inc.)
 maintainer:          bjones@galois.com
-copyright:           Galois, Inc. 2014-2016
+copyright:           Galois Inc. 2014-2016
 category:            Development
 build-type:          Custom
 cabal-version:       >=1.10
