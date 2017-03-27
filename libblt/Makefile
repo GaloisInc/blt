@@ -12,6 +12,9 @@
 # CPPFLAGS - preprocessor flags (e.g., -I<dir>)
 # LDFLAGS  - linker flags       (e.g., -L<dir>)
 #
+# On some systems, the ntl and glpk libraries may be compiled with gmp support
+# enabled. In this case your LDFLAGS should contain "-lgmp".
+#
 # Defaults for these flags are set in the config.mk.example file based
 # on values for the "build options".
 #
