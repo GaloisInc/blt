@@ -45,7 +45,7 @@ GLPK_URL=${GLPK_URL:-"http://ftp.gnu.org/gnu/glpk/glpk-${GLPK_VER}.tar.gz"}
 GLPK_OPTS=${GLPK_OPTS:-"--disable-shared"}
 
 BOOST_VER=${BOOST_VER:-"1.59.0"}
-BOOST_VER_UND=$(echo $BOOST_VER | sed 's/\./_/g')
+BOOST_VER_UND=${BOOST_VER//\./_}
 BOOST_URL=${BOOST_URL:-"http://sourceforge.net/projects/boost/files/boost/${BOOST_VER}/boost_${BOOST_VER_UND}.tar.gz/download"}
 
 YICES_VER=${YICES_VER:-"2.4.0"}
@@ -55,14 +55,18 @@ YICES_OPTS=${YICES_OPTS:-""}
 
 ### Print the environment ###
 
-printf "%s" "Environment:\n"
-printf "%s" "------------\n"
-printf "%15s%s\n" "PREFIX:"    "${PREFIX:-}"
-printf "%15s%s\n" "CPPFLAGS:"  "${CPPFLAGS:-}"
-printf "%15s%s\n" "LDFLAGS:"   "${LDFLAGS:-}"
-printf "%15s%s\n" "GET_YICES:" "${GET_YICES:-}"
-printf "%15s%s\n" "OS:" "${OS}"
-
+printf "%s\n" "Environment:"
+printf "%s\n" "------------"
+printf "\n"
+printf "%15s %s\n" "PREFIX:"    "${PREFIX:-}"
+printf "%15s %s\n" "CPPFLAGS:"  "${CPPFLAGS:-}"
+printf "%15s %s\n" "LDFLAGS:"   "${LDFLAGS:-}"
+printf "%15s %s\n" "GET_YICES:" "${GET_YICES:-}"
+printf "%15s %s\n" "OS:" "$OS"
+printf "%15s %s\n" "NTL:" "$NTL_URL"
+printf "%15s %s\n" "GLPK:" "$GLPK_URL"
+printf "%15s %s\n" "Boost:" "$BOOST_URL"
+printf "%15s %s\n" "Yices:" "$YICES_URL"
 
 ### Auxilliary Functions
 
@@ -107,7 +111,7 @@ else
     curl -L "$NTL_URL" | tar xz
     pushd "ntl-${NTL_VER}"/src
     # set -e explicitly b/c configure does not return proper exit status codes
-    bash -e configure PREFIX="$PREFIX" CXXFLAGS="-O2 -fPIC" $NTL_OPTS
+    bash -e configure PREFIX="$PREFIX" CXXFLAGS="-O2 -fPIC" "$NTL_OPTS"
     make && make install
     popd
 fi
@@ -121,25 +125,25 @@ else
     echo "Getting GLPK... $GLPK_URL"
     curl "${GLPK_URL}" | tar xz
     pushd "glpk-${GLPK_VER}"
-    CFLAGS="-fPIC" ./configure --prefix="$PREFIX" $GLPK_OPTS
+    CFLAGS="-fPIC" ./configure --prefix="$PREFIX" "$GLPK_OPTS"
     make && make install
     popd
 fi
 
 # Install boost
-if [ -d $PREFIX/include/boost ]; then
+if [ -d "$PREFIX/include/boost" ]; then
     echo "Skipping boost (found $PREFIX/include/boost)"
 else
     echo "Getting boost... $BOOST_URL"
-    curl -L $BOOST_URL | tar xz
+    curl -L "$BOOST_URL" | tar xz
     cp -r "boost_${BOOST_VER_UND}/boost" "$PREFIX/include/boost"
 fi
 
 # Install Yices
 if [ -n "${GET_YICES:-}" ]; then
-    if [ -f "$PREFIX/lib/libyices.so"    -o \
-         -f "$PREFIX/lib/libyices.dylib" -o \
-         "$OS" == "Unknown" ]; then
+    if [ -f "$PREFIX/lib/libyices.so" ] || \
+       [ -f "$PREFIX/lib/libyices.dylib" ] || \
+       [ "$OS" == "Unknown" ]; then
         echo "Skipping Yices..."
         unset USE_YICES
     else
@@ -149,7 +153,7 @@ if [ -n "${GET_YICES:-}" ]; then
             echo "Getting Yices... $YICES_URL"
             curl "${YICES_URL}" | tar xz
             pushd "yices-${YICES_VER}"
-            ./configure --prefix="$PREFIX" $YICES_OPTS
+            ./configure --prefix="$PREFIX" "$YICES_OPTS"
             make
             make install
             if [ "$OS" == "Darwin" ]; then
