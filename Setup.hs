@@ -6,10 +6,13 @@ import Distribution.Simple
 import Distribution.Verbosity
 import Distribution.Simple.Setup
 import Distribution.Simple.Utils          ( rawSystemExit
+                                          , installOrdinaryFile
                                           , notice
                                           )
-import Distribution.PackageDescription    ( PackageDescription(..)
+import Distribution.PackageDescription    ( GenericPackageDescription(..)
+                                          , PackageDescription(..)
                                           , BuildInfo(..)
+                                          , HookedBuildInfo
                                           , emptyBuildInfo
                                           , updatePackageDescription
                                           )
@@ -61,51 +64,44 @@ buildBLT verb = do
     rawSystemExit verb "cp" ["config.mk.example", "config.mk"]  -- use default config
     rawSystemExit verb "make" ["print"]                         -- print build environment
     rawSystemExit verb "make" []                                -- execute the build
+    rawSystemExit verb "ranlib" [ "libblt.a" ]
 
 -- | Install library to specified directly.
 installBLT :: Verbosity -> FilePath -> IO ()
 installBLT verb dest = do
   notice verb ("blt/Setup.hs@installBLT: copying libblt.a library to " ++ dest)
   createDirectoryIfMissing True dest
-  rawSystemExit verb "cp" [ "libblt/libblt.a", dest ]
-  rawSystemExit verb "ranlib" [ dest </> "libblt.a" ]
+  installOrdinaryFile verb ("libblt"</>"libblt.a") ( dest </> "libblt.a" )
   notice verb "blt/Setup.hs@installBLT: done."
-
 
 ------------------------------------------------------------------------
 -- Build system hooks.
 
 main :: IO ()
 main = defaultMainWithHooks simpleUserHooks
-    { postConf = postConfHook
-    , buildHook = doBuild
+    { confHook = doConf
     , cleanHook = doClean
     , postInst = postInstHook
     , postCopy = postCopyHook
     }
 
--- | Command to run after "cabal configure" command.
-postConfHook :: Args -> ConfigFlags -> PackageDescription -> LocalBuildInfo -> IO ()
-postConfHook a f pkg_desc local_build_info = do
-  let verb = fromFlag (configVerbosity f)
-  buildPath <- getBuildPath local_build_info
-  -- Build BLT
-  buildBLT verb
-  -- Install 'libblt' to build directory 'buildPath' for Haskell to link against.
-  installBLT verb buildPath
-  -- Modify config to use blt path.
-  let p' = pkg_desc `updateLibBuild` extraLibDir buildPath
-  -- Call standard postConf hook
-  postConf simpleUserHooks a f p' local_build_info
+doConf :: (GenericPackageDescription, HookedBuildInfo) -> ConfigFlags -> IO LocalBuildInfo
+doConf (pkg_desc, hbi) flags =
+  do let verb = fromFlag (configVerbosity flags)
 
--- | Buld libblt prior to building other components.
-doBuild :: PackageDescription -> LocalBuildInfo -> UserHooks -> BuildFlags -> IO ()
-doBuild pkg_desc local_build_info h f = do
-  buildPath <- getBuildPath local_build_info
-  -- Add library and blt to package.
-  let p' = pkg_desc `updateLibBuild` extraLibDir buildPath
-  -- call standard build hook
-  buildHook simpleUserHooks p' local_build_info h f
+     -- Call the default configure action
+     local_build_info <- confHook simpleUserHooks (pkg_desc, hbi) flags
+
+     -- Figure out where Cabal wants to build
+     buildPath <- getBuildPath local_build_info
+     -- Build BLT
+     buildBLT verb
+     -- Install 'libblt' to build directory 'buildPath' for Haskell to link against.
+     installBLT verb buildPath
+
+     -- Modify config to use blt path.
+     let p' = (localPkgDescr local_build_info) `updateLibBuild` extraLibDir buildPath
+     return local_build_info{ localPkgDescr = p' }
 
 -- | Install BLT library after other installation occured.
 postInstHook ::  Args -> InstallFlags -> PackageDescription -> LocalBuildInfo -> IO ()
