@@ -81,6 +81,7 @@ main :: IO ()
 main = defaultMainWithHooks simpleUserHooks
     { confHook = doConf
     , cleanHook = doClean
+    , postConf = postConfHook
     , postInst = postInstHook
     , postCopy = postCopyHook
     }
@@ -102,6 +103,17 @@ doConf (pkg_desc, hbi) flags =
      -- Modify config to use blt path.
      let p' = (localPkgDescr local_build_info) `updateLibBuild` extraLibDir buildPath
      return local_build_info{ localPkgDescr = p' }
+
+
+-- | Command to run after "cabal configure" command.
+postConfHook :: Args -> ConfigFlags -> PackageDescription -> LocalBuildInfo -> IO ()
+postConfHook a f pkg_desc local_build_info = do
+  buildPath <- getBuildPath local_build_info
+  -- Modify config to use blt path.
+  let p' = pkg_desc `updateLibBuild` extraLibDir buildPath
+  -- Call standard postConf hook
+  postConf simpleUserHooks a f p' local_build_info
+
 
 -- | Install BLT library after other installation occured.
 postInstHook ::  Args -> InstallFlags -> PackageDescription -> LocalBuildInfo -> IO ()
