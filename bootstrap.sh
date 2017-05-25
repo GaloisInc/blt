@@ -36,9 +36,9 @@ OS=$(uname)
 # both VERSION and URL must be specified together in the calling environment,
 # or the defaults below will be used
 
-NTL_VER=${NTL_VER:-"9.4.0"}
+NTL_VER=${NTL_VER:-"9.11.0"}
 NTL_URL=${NTL_URL:-"http://www.shoup.net/ntl/ntl-${NTL_VER}.tar.gz"}
-NTL_OPTS=${NTL_OPTS:-"WIZARD=off"}
+NTL_OPTS=${NTL_OPTS:-"NTL_GMP_LIP=off WIZARD=off"}
 
 GLPK_VER=${GLPK_VER:-"4.55"}
 GLPK_URL=${GLPK_URL:-"http://ftp.gnu.org/gnu/glpk/glpk-${GLPK_VER}.tar.gz"}

@@ -48,8 +48,8 @@ BLT depends on the following 3rd party software:
   * C++ compiler supporting the c++0x standard
   * [GLPK]  (>= 4.53 && <= 4.55) -- provides real-valued linear programming
             (note v4.56 & 4.57 are known to be incompatible with BLT)
-  * [NTL]   (>= 6.2.1 && <7.0 or >= 9.0.0) -- provides lattice reduction
-            algorithms
+  * [NTL]   (>= 6.2.1 && <7.0 or 9.x; the 8.x and 10.x series are known *not* to be
+            compatible with BLT) -- provides lattice reduction algorithms
   * [Boost] C++ headers (>= 1.55.0) -- provides matrices and vectors, rational
             numbers, and the unit test framework. Only a subset of the boost
             headers are needed
