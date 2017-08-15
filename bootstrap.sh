@@ -111,7 +111,7 @@ else
     curl -L "$NTL_URL" | tar xz
     pushd "ntl-${NTL_VER}"/src
     # set -e explicitly b/c configure does not return proper exit status codes
-    bash -e configure PREFIX="$PREFIX" CXXFLAGS="-O2 -fPIC" "$NTL_OPTS"
+    bash -e configure PREFIX="$PREFIX" WIZARD=off CXXFLAGS="-O2 -fPIC" "$NTL_OPTS"
     make && make install
     popd
 fi
