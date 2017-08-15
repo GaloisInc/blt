@@ -461,6 +461,7 @@ int stretch_to_cube(matrix<int64> &L, matrix<int64> &C) {
     int64 l = 1;
     for (size_t i = 0; i < n; ++i) {
         int64 r = C(i,1)-C(i,0);
+        TRACE("C(i,1)-C(i,0) = " << r);
         if (r <= 0) {
             ERROR("upper and lower bound coincide or conflict");
             return BLT_STATUS_INPUT_ERROR;
