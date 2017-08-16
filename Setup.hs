@@ -23,6 +23,7 @@ import Distribution.Simple.LocalBuildInfo ( LocalBuildInfo(..)
 import System.Directory                   ( createDirectoryIfMissing
                                           , setCurrentDirectory
                                           , getCurrentDirectory
+                                          , doesFileExist
                                           )
 
 import System.FilePath                    ( (</>)
@@ -61,7 +62,10 @@ extraLibDir path = emptyBuildInfo { extraLibDirs = [path] }
 buildBLT :: Verbosity -> IO ()
 buildBLT verb = do
   withCurrentDirectory "libblt" $ do
-    rawSystemExit verb "cp" ["config.mk.example", "config.mk"]  -- use default config
+    hasConfig <- doesFileExist "config.mk"
+    if not hasConfig
+      then rawSystemExit verb "cp" ["config.mk.example", "config.mk"]  -- use default config
+      else return ()  -- use existing config.mk
     rawSystemExit verb "make" ["print"]                         -- print build environment
     rawSystemExit verb "make" []                                -- execute the build
     rawSystemExit verb "ranlib" [ "libblt.a" ]

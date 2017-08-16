@@ -8,3 +8,8 @@ stack.yaml
 setup_env.sh
 setup_mirror.sh
 env
+dist-newstyle/
+.boring
+_darcs/
+.cmd_history
+*~
