@@ -56,14 +56,15 @@ buildBLT verb = do
     do hasConfig <- doesFileExist "config.mk"
        when (hasConfig == False) $ do
          rawSystemExit verb "cp" ["config.mk.example", "config.mk"]
-    rawSystemExit verb "make" ["print"]                         -- print build environment
-
+    -- print build environment
+    when (verb >= verbose) $ rawSystemExit verb "make" ["print"]
+    -- Build libblt.a
     do when (verb >= verbose) $ putStrLn $ "Running make libblt.a"
        exitcode <- rawSystem "make" ["libblt.a"]
        when (exitcode /= ExitSuccess) $ do
          hPutStrLn stderr "'make libblt.a' failed."
          exitWith exitcode
-
+    -- Generate archive in libblt.a
     rawSystemExit verb "ranlib" [ "libblt.a" ]
 
 -- | Install library to specified directly.
