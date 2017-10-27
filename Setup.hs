@@ -1,7 +1,7 @@
 {-# OPTIONS_GHC -Wall #-}
 module Main (main) where
 
-import Control.Exception
+import Control.Monad
 import Distribution.Simple
 import Distribution.Verbosity
 import Distribution.Simple.Setup
@@ -20,24 +20,14 @@ import Distribution.Simple.LocalBuildInfo ( LocalBuildInfo(..)
                                           , InstallDirs(..)
                                           , absoluteInstallDirs
                                           )
-import System.Directory                   ( createDirectoryIfMissing
-                                          , setCurrentDirectory
-                                          , getCurrentDirectory
-                                          , doesFileExist
-                                          )
-
-import System.FilePath                    ( (</>)
-                                          )
-
+import System.Directory
+import System.Exit
+import System.FilePath
+import System.IO
+import System.Process
 
 ------------------------------------------------------------------------
 -- Utilities
-
--- | Run computation with current directory.
-withCurrentDirectory :: FilePath -> IO a -> IO a
-withCurrentDirectory p m = do
-  origDir <- getCurrentDirectory
-  (setCurrentDirectory p >> m) `finally` setCurrentDirectory origDir
 
 -- | Update library build infomation.
 updateLibBuild :: PackageDescription -> BuildInfo -> PackageDescription
@@ -62,12 +52,18 @@ extraLibDir path = emptyBuildInfo { extraLibDirs = [path] }
 buildBLT :: Verbosity -> IO ()
 buildBLT verb = do
   withCurrentDirectory "libblt" $ do
-    hasConfig <- doesFileExist "config.mk"
-    if not hasConfig
-      then rawSystemExit verb "cp" ["config.mk.example", "config.mk"]  -- use default config
-      else return ()  -- use existing config.mk
+    -- Create config if it does not exist.
+    do hasConfig <- doesFileExist "config.mk"
+       when (hasConfig == False) $ do
+         rawSystemExit verb "cp" ["config.mk.example", "config.mk"]
     rawSystemExit verb "make" ["print"]                         -- print build environment
-    rawSystemExit verb "make" []                                -- execute the build
+
+    do when (verb >= verbose) $ putStrLn $ "Running make libblt.a"
+       exitcode <- rawSystem "make" ["libblt.a"]
+       when (exitcode /= ExitSuccess) $ do
+         hPutStrLn stderr "'make libblt.a' failed."
+         exitWith exitcode
+
     rawSystemExit verb "ranlib" [ "libblt.a" ]
 
 -- | Install library to specified directly.

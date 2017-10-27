@@ -6,9 +6,9 @@ description:         Haskell API for the BLT solver. BLT handles bounded
                      techniques.
 license:             MIT
 license-file:        LICENSE
-author:              Benjamin Jones (Galois Inc.)
-maintainer:          bjones@galois.com
-copyright:           Galois Inc. 2014-2016
+author:              Galois Inc.
+maintainer:          jhendrix@galois.com
+copyright:           Galois Inc. 2014-2017
 category:            Development
 build-type:          Custom
 cabal-version:       >=1.10
@@ -24,12 +24,12 @@ source-repository head
   type: git
   location: https://github.com/GaloisInc/blt.git
 
-
 library
   default-language:  Haskell2010
   exposed-modules:   BLT.Binding
   other-modules:     BLT.Internal
-  build-depends:     base >=4.7 && <5
+  build-depends:
+    base >=4.7 && <5
   hs-source-dirs:    src
   include-dirs:      libblt
 
@@ -54,4 +54,4 @@ custom-setup
                , directory
                , filepath
                , Cabal
-
+               , process
