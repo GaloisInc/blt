@@ -60,7 +60,7 @@ buildBLT verb = do
     when (verb >= verbose) $ rawSystemExit verb "make" ["print"]
     -- Build libblt.a
     do when (verb >= verbose) $ putStrLn $ "Running make libblt.a"
-       exitcode <- rawSystem "make" ["libblt.a"]
+       exitcode <- rawSystem "make" ["all"]
        when (exitcode /= ExitSuccess) $ do
          hPutStrLn stderr "'make libblt.a' failed."
          exitWith exitcode
