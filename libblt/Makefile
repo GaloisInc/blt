@@ -100,7 +100,7 @@ BLT_OBJS =          \
 	yices_wrapper.o \
 	yices_stub.o
 
-EXT_LIBS = -lglpk -lntl
+EXT_LIBS = -lglpk -lntl -lgmp
 
 EXES = run_blt latcon2bilp
 
