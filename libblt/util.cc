@@ -21,11 +21,11 @@ bool approximatelyEqual(double a, double b, double epsilon) {
 /// Compute a < b up to epsilon tolerance. Technically, returns true if `b-a`
 /// is greater than epsilon times the larger of the two.
 /// From Knuth's TAoCP.
-bool definatelyLess(double a, double b, double epsilon) {
+bool definitelyLess(double a, double b, double epsilon) {
     return (b - a) > ((fabs(a) < fabs(b) ? fabs(b) : fabs(a)) * epsilon);
 }
 
-/// Disjunction of 'approximatelyEqual' and 'definatelyLess'.
+/// Disjunction of 'approximatelyEqual' and 'definitelyLess'.
 bool approximatelyLE(double a, double b, double epsilon) {
-    return definatelyLess(a, b, epsilon) || approximatelyEqual(a, b, epsilon);
+    return definitelyLess(a, b, epsilon) || approximatelyEqual(a, b, epsilon);
 }

@@ -89,7 +89,7 @@ BOOST_AUTO_TEST_CASE( test_glpk_v_yices_2d ) {
         BOOST_CHECK(grc == LP_OK);
         switch (dec) {
             case BLT_CHECK_UNSAT:
-                BOOST_CHECK(definatelyLess(b_fp, d, DIST_EPS));
+                BOOST_CHECK(definitelyLess(b_fp, d, DIST_EPS));
                 break;
             case BLT_CHECK_SAT:
                 BOOST_CHECK(approximatelyLE(d, b_fp, DIST_EPS));
