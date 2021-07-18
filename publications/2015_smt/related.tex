@@ -1,0 +1,38 @@
+\section{Related and Future Work}
+\label{sec:final}
+
+\textbf{Related Work}.  Our work builds upon the well-known Schnorr-Euchner
+algorithm for solving the closest vector problem.  Prior to developing BLT, we
+used the closest-vector solver in
+\texttt{fplll}~\cite{DBLP:conf/codcry/HanrotPS11} to solve problems.  It uses
+the $L^2$ norm, and thus is not a decision procedure.  However, we found that
+it could often find satisfying assignments at quality levels greater than $60$
+despite the lack of completeness.
+
+\texttt{LattE} is a program for enumerating lattice points in a rational
+polytope \cite{DeLoera2004}. This is asking strictly more than the question
+we've discussed. \texttt{LattE} is competitive with commercial branch-and-bound
+solvers, the same solvers which perform poorly on the DCT problems in section
+\ref{sec:jpeg}. We attempted to evaluate \texttt{LattE} on our DCT problems,
+but found that it would crash given a 16 GB memory limit.
+
+\textbf{Future Development}.
+We are still working on developing BLT, and have plans to continue
+testing it on a wider variety of challenge problems.  We plan to
+enable the $\linf$ distance calculation to use exact arithmetic.  We
+also plan to explore ways to solve problems with one-sided bounds via
+heuristics, and ways to infer unsatisfiable subsets of constraints so
+that BLT can be integrated into an SMT solver.  Finally, we would like
+to integrate techniques from SAT community such as
+conflict-driven-clause learning into the ILP search performed by BLT.
+The later should help improve its performance on hard problem instances.
+
+More broadly, it also seems interesting to explore how the calculus and
+heuristics that BLT uses can be integrated into other ILP solvers, such as those
+based on cutting planes (e.g.~\cite{DBLP:journals/jar/JovanovicM13}).  Those algorithms
+are able to work on more general problems as they do not require explicit upper
+and lower bounds for all linear expressions.  On the other hand, BLT appears
+to be more effective at making effective decisions within the search.
+
+\textit{Acknowledgements}. The authors would like to thank Dejan Jovanovi\'{c},
+Grant Passmore, and the reviewers for comments that helped improve this paper.

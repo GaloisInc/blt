@@ -1,0 +1,117 @@
+%% BOUNDED CONSTRAINT PROBS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Preliminaries}
+\label{sec:preliminaries}
+
+\newcommand{\indices}[1]{\{\,1\ldots,#1\}}
+
+Throughout this section we use bold capital letter symbols such as
+$\mat{A}$ to denote matrices,
+bold lower case letters such as $\v{x}$ to denote vectors,
+and undecorated lower case letters to denote scalars.  The components of a
+vector $\v{x} \in \RR^n$ are denoted by $\v{x}_i$ with $i \in \{1,\ldots,n\}$.
+%
+We use Greek letters such as $\theta$ to denote functions that assign values
+to only some of the coordinates (e.g.,~the function $\theta : Y \to \ZZ$ with
+$Y \subseteq \indices{n}$ only assigns values to indices in $Y$).
+%
+A vectors $\v{x}$ is then just an assignment where all the indices have
+been assigned.
+
+\paragraph{Lattices.} A \emph{lattice} is a discrete additive subgroup of a
+Euclidean space. A subset $\La \subset \RR^n$ is a lattice if and only if
+there is a collection of linearly independent vectors $\v{v}_1, \ldots,
+\v{v}_n \in \RR^n$ such that
+$\La = \left\{ \sum_{i=1}^n c_i \v{v}_i \, \mid \, c_i \in \ZZ \right\}$.
+%
+Such a collection is called a \emph{basis} of
+$\La$ and the number $n$ is called the \emph{rank}.
+%
+A lattice generally has many different bases.
+%, but when a basis
+%$\{\v{v}_1, \ldots, \v{v}_n\}$ is fixed, each point $\v{x} \in \La$
+%can be decomposed into a weighted integral
+%sum $\v{x} = \Sum_{i=1}^n \v{v}_i \v{u}_i$ of the vectors.
+%
+\emph{Lattice reduction} is a term used to describe
+algorithms for producing a basis that is ``short'' and ``nearly orthogonal'',
+a property that is extremely useful in practice~\cite{Lenstra}.
+
+%JHx
+Given a fixed basis $\{\v{v}_1, \ldots, \v{v}_n\}$ of $\La$ and a partial
+assignment $\theta : Y \to \ZZ$ with $Y \subseteq \indices{n}$,
+we define the set of lattice elements $\La_\theta \subseteq \La$ as follows:
+%
+\begin{equation}
+     \label{eq:lat-sublayer}
+     \La_\theta := \left\{ \sum_{i=1}^n c_i \v{v}_i \mid c_i \in \ZZ, \,
+         i \in \fn{dom}(\theta) \Rightarrow c_i = \theta(i) \right\}.
+\end{equation}
+%
+We call $\La_\theta$ a \emph{sublayer} of $\La$.  The set $\La_\theta$ should be thought
+of as the subset of lattice elements which remain after a partial assignment
+of coefficients is made.
+
+Our algorithm for finding \emph{integer} solutions will rely on an
+underlying solver for systems of \emph{real} solutions.  To model this,
+we define the real-affine linear space $\La^\RR_\theta$ containing
+$\La_\theta$:
+%
+\begin{equation}
+     \La^\RR_\theta := \left\{ \sum_{i=1}^n c_i \v{v}_i \mid c_i \in \RR, \,
+        i \in \fn{dom}(\theta) \Rightarrow c_i = \theta(i) \right\}.
+\end{equation}
+%
+A fundamental problem in the theory of lattices is the \emph{closest vector
+problem} (CVP)~\cite{Lenstra}. We introduce it here because it is very
+closely related to our approach for solving bounded ILP. CVP has the following
+form: given a lattice $\La \subset \RR^n$ and a point $\v{q} \in \RR^n$, find
+a vector $\v{z} \in \La$ that is \emph{closest} to $\v{q}$; i.e. a vector for
+which $\norm{\v{z}-\v{q}}$ is minimal.
+%
+Such a closest vector must exist, but it may be difficult to compute and may
+not be unique.
+%
+The problem of deciding whether such a vector exists within a given bound
+is known to be NP-hard~\cite{Boas}, though polynomial-time algorithms are
+known if the rank of $\La$ is fixed~\cite{Schnorr-hierarchy}.
+%
+\paragraph{$\linf$ Metric.} In our decision procedure, we work in $\RR^n$
+with a different metric than the usual Euclidean metric. The $\linf$ norm is
+defined by $\norminf{\v{x}} := \max \{ \abs{x_i} \mid i=1,\ldots,n \}$. It
+determines a metric via $d_\infty(\v{x}, \v{y}) := \norminf{\v{x}-\v{y}}$.
+
+With $\linf$, the set of points whose distance from a given point $\v{p}$
+is at most $r$ (i.e. the closed ball of radius $r$ around $\v{p}$) is a
+hypercube (the $n$-dimensional analogue of a square) each of whose faces
+is orthogonal to a coordinate axis. Explicitly,
+%
+\begin{equation}
+    \label{eq:linf-sphere}
+    \left\{ \v{x} \in \RR^n \mid d_\infty(\v{x}, \v{p}) \le r \right\} =
+    \left\{ (x_1, \ldots, x_n) \mid p_i-r \le x_i \le p_i+r \right\}.
+\end{equation}
+%
+The distance metric can be extended to subsets of $\RR^n$ by taking it to be the
+minimum distance between any two points in the subsets, i.e.,
+for $X, Y \subseteq \RR^n$,
+\begin{equation}
+ d_\infty(X, Y) := \min_{(\v{x},\v{y}) \in X{}\times{}Y} d_\infty(\v{x},\v{y})
+\end{equation}
+%
+We remark that when the sets $X$ and $Y$ can be defined by systems of linear
+equality and inequality constraints over rational coefficients, then the
+$\linf$ distance can be calculated using linear programming techniques by
+observing that:
+%
+\begin{align}
+d_\infty(X, Y)
+    &= \min \left\{\ d_\infty(\v{x}, \v{y})   \mid \v{x} \in X,\, \v{y} \in Y\ \right\} \\
+    &= \min \left\{\ \max_i\{\abs{x_i-y_i}\}  \mid \v{x} \in X,\, \v{y} \in Y\ \right\} \\
+    &= \min \left\{\ t \mid \abs{x_i-y_i} \le t,\, \v{x} \in X,\, \v{y} \in Y\ \right\} \\
+    &= \min \left\{\ t \mid x_i-y_i \le t,\, -(x_i-y_i) \le t,\, \v{x} \in X\,
+      \v{y} \in Y\ \right\}
+\label{eq:set_distance}
+\end{align}
+%
+The last line is a real linear optimization problem over the free
+variables in the systems of equations used to define $X$ and $Y$.

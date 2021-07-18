@@ -1,0 +1,113 @@
+\documentclass{easychair}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[utf8]{inputenc}         % text encoding
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}               % \mathbb, \mathcal
+\usepackage[algoruled]{algorithm2e} % \begin{algorithm}
+\usepackage{lmodern}                % good replace for computer modern
+\usepackage{bm}                     % \boldsymbol
+\usepackage{xcolor}
+\usepackage{placeins}               % \FloatBarrier
+%\usepackage{parskip}
+
+% number only those equations that get ref'd somewhere
+\usepackage{mathtools}
+\mathtoolsset{
+  showonlyrefs=true % or false in draft mode
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% New Commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\ZZ{\mathbb{Z}}  % integers
+\newcommand\QQ{\mathbb{Q}}  % rationals
+\newcommand\RR{\mathbb{R}}  % reals
+
+\renewcommand\v[1]{\boldsymbol{#1}}
+\newcommand\mat[1]{\mathbf{#1}}
+\newcommand\m[1]{\mathbf{#1}}
+\newcommand\proc[1]{\textsc{#1}}
+
+\DeclarePairedDelimiterX{\norm}[1]{\lVert}{\rVert}{#1}
+\DeclarePairedDelimiterX{\abs}[1]{\lvert}{\rvert}{#1}
+\newcommand\norminf[1]{\norm{#1}_\infty}
+\DeclareMathOperator{\vol}{vol}
+
+\newcommand\La{\mathcal{L}}  % Lattice
+\newcommand\Co{\mathcal{C}}  % Constraints
+\newcommand\linf{L^\infty}   % \infty-norm/metric
+\newcommand{\ltwo}{L^2}
+\newcommand\tz{\tilde{\v{z}}}
+\newcommand{\fn}[1]{\mathrm{#1}}
+
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\ceil} [1]{\lceil  #1 \rceil}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% New Theorems
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{plain}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{6pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Content
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\title{Bounded Integer Linear Constraint Solving \\
+       via Lattice Search}
+\titlerunning{Bounded Integer Linear Constraint Solving}
+\author{Joe Hendrix \and Benjamin F Jones}
+\institute{Galois Inc., Portland,OR \\
+    \email{jhendrix@galois.com, bjones@galois.com}}
+\authorrunning{J. Hendrix and B. Jones}
+
+\maketitle
+
+\begin{abstract}
+
+\setlength{\parskip}{6pt}
+
+\noindent{}We present a novel algorithm for solving integer linear constraint
+problems of the form $\v{l} \le \mat{A} \v{x} \le \v{u}$. Our approach is based
+on techniques used to solve the closest vector problem for lattices, but adapted
+to use the $\linf{}$ distance metric. We have implemented this algorithm in a
+constraint solver called BLT.
+
+\noindent{}The BLT solver was motivated by efforts to apply SMT solvers to
+signal processing algorithms.  In particular, we describe here the problem of
+\emph{reversing JPEG}, that is, finding compressed data that decompress into an
+image satisfying given constraints.  This problem can be expressed as a bounded
+integer linear constraint problem, but was intractable to the SMT solvers we
+tried.  In contrast, BLT is able to solve many of the examples in seconds,
+including both SAT and UNSAT problems.
+
+\end{abstract}
+
+\input{introduction}
+\input{bcp}
+\input{decision-procedure}
+\input{jpeg}
+\input{related}
+
+\bibliographystyle{plain}
+\bibliography{blt-paper}
+
+\end{document}
