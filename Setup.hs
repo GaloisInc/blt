@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP #-}
 {-# OPTIONS_GHC -Wall #-}
 module Main (main) where
 
@@ -26,6 +27,11 @@ import System.FilePath
 import System.IO
 import System.Process
 
+#if MIN_VERSION_Cabal(3,14,0)
+import Distribution.Types.LocalBuildInfo ( buildDir )
+import Distribution.Utils.Path ( getSymbolicPath, makeSymbolicPath )
+#endif
+
 ------------------------------------------------------------------------
 -- Utilities
 
@@ -39,11 +45,11 @@ updateLibBuild pkg_desc bi = updatePackageDescription (Just bi, []) pkg_desc
 getBuildPath :: LocalBuildInfo -> IO FilePath
 getBuildPath lcl_build_info = do
   origDir <- getCurrentDirectory
-  return $ origDir </> buildDir lcl_build_info
+  return $ origDir </> getSymbolicPath (buildDir lcl_build_info)
 
 -- | Generate BuildInfo that would add extra library directory.
 extraLibDir :: FilePath -> BuildInfo
-extraLibDir path = emptyBuildInfo { extraLibDirs = [path] }
+extraLibDir path = emptyBuildInfo { extraLibDirs = [makeSymbolicPath path] }
 
 ------------------------------------------------------------------------
 -- Commands for compiling and building BLT.
@@ -55,9 +61,9 @@ buildBLT verb = do
     -- Create config if it does not exist.
     do hasConfig <- doesFileExist "config.mk"
        when (hasConfig == False) $ do
-         rawSystemExit verb "cp" ["config.mk.example", "config.mk"]
+         rawSystemExit' verb "cp" ["config.mk.example", "config.mk"]
     -- print build environment
-    when (verb >= verbose) $ rawSystemExit verb "make" ["print"]
+    when (verb >= verbose) $ rawSystemExit' verb "make" ["print"]
     -- Build libblt.a
     do when (verb >= verbose) $ putStrLn $ "Running make libblt.a"
        exitcode <- rawSystem "make" ["all"]
@@ -65,7 +71,7 @@ buildBLT verb = do
          hPutStrLn stderr "'make libblt.a' failed."
          exitWith exitcode
     -- Generate archive in libblt.a
-    rawSystemExit verb "ranlib" [ "libblt.a" ]
+    rawSystemExit' verb "ranlib" [ "libblt.a" ]
 
 -- | Install library to specified directly.
 installBLT :: Verbosity -> FilePath -> IO ()
@@ -142,6 +148,24 @@ doClean :: PackageDescription -> () -> UserHooks -> CleanFlags -> IO ()
 doClean p () u c = do
   -- cleanup c++ library artifacts
   withCurrentDirectory "libblt" $
-    rawSystemExit normal "make" ["clean"]
+    rawSystemExit' normal "make" ["clean"]
   -- Clean up dist artifacts.
   cleanHook simpleUserHooks p () u c
+
+------------------------------------------------------------------------
+-- Compatibility shims.
+
+#if MIN_VERSION_Cabal(3,14,0)
+rawSystemExit' :: Verbosity -> FilePath -> [String] -> IO ()
+rawSystemExit' verbosity path args =
+  rawSystemExit verbosity Nothing path args
+#else
+getSymbolicPath :: FilePath -> FilePath
+getSymbolicPath = id
+
+makeSymbolicPath :: FilePath -> FilePath
+makeSymbolicPath = id
+
+rawSystemExit' :: Verbosity -> FilePath -> [String] -> IO ()
+rawSystemExit' = rawSystemExit
+#endif
